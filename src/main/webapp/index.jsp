@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="it" class="h-100" >
 	 <head>
 	 
@@ -52,13 +53,25 @@
 							
 							
 								<div class="col-md-6">
-									<label for="annuncio" class="form-label">Annuncio</label>
+									<label for="annuncio" class="form-label">Annuncio:</label>
 									<input type="text" name="annuncio" id="annuncio" class="form-control" placeholder="Inserire il testo dell'annuncio" >
 								</div>
 								
 								<div class="col-md-6">
-									<label for="prezzo" class="form-label">Prezzo minimo</label>
+									<label for="prezzo" class="form-label">Prezzo minimo:</label>
 									<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire il prezzo minimo" >
+								</div>
+								
+								<div class="col-md-6 form-check">
+									<p>Categorie:</p>
+									<c:forEach items="${search_categorie_attr}" var="categoriaEntry">
+										<div class="form-check">
+											  <input class="form-check-input" name="categoriaEntry" type="checkbox" value="${categoriaEntry.id}" id="categoriaEntry-${categoriaEntry.id}">
+											  <label class="form-check-label" for="categoriaEntry-${categoriaEntry.id}" >
+											    ${categoriaEntry.codice}
+											  </label>
+										</div>
+								  	</c:forEach>
 								</div>
 								
 								<div class="col-12">

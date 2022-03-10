@@ -21,4 +21,6 @@ public interface AnnuncioService {
 	
 	public void setAnnuncioDAO(AnnuncioDAO AnnuncioDAO);
 	
+	public List<Annuncio> findByExample(Annuncio annuncioInstance) throws Exception;
+	
 }
