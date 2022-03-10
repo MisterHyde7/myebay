@@ -1,4 +1,4 @@
-package it.prova.myebay.web.servlet;
+package it.prova.myebay.web.servlet.annuncio;
 
 import java.io.IOException;
 import java.util.List;

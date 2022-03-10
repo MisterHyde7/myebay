@@ -23,5 +23,9 @@ public interface UtenteService {
 	public Utente findByUsernameAndPassword(String username, String password) throws Exception;
 	
 	public void aggiungiRuolo(Utente utenteEsistente, Ruolo ruoloInstance) throws Exception;
+
+	public Utente accedi(String loginInput, String passwordInput);
+
+	public boolean procediAllAcquisto(long parseLong, int prezzo);
 	
 }

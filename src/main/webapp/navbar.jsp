@@ -12,7 +12,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}">Home</a>
           </li>
-          <c:if test="${userInfo.isAdmin()}">
+          <c:if test="${true}">
 	          <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
 	            <ul class="dropdown-menu" aria-labelledby="dropdown07">
@@ -25,12 +25,12 @@
       </div>
       <div class="col-md-3 text-end">
         <c:if test="${userInfo.nome!=null}">
-        <p class="navbar-text">Utente: ${userInfo.username }(${userInfo.nome } ${userInfo.cognome })
-     	<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></p>
+	        <p class="navbar-text">Utente: ${userInfo.username }(${userInfo.nome } ${userInfo.cognome })
+	     	<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></p>
      	</c:if>
      	<c:if test="${userInfo.nome==null}">
-     	<p class="navbar-text">
-     	<a href="${pageContext.request.contextPath}/LoginServlet">Login</a></p>
+	     	<p class="navbar-text">
+	     	<a href="${pageContext.request.contextPath}/PrepareLoginServlet?from=${pageContext.request.requestURI}">Login</a></p>
      	</c:if>
       </div>
     </div>

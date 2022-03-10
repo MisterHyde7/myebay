@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 
 import it.prova.myebay.dao.UtenteDAO;
+import it.prova.myebay.exceptions.CreditoResiduoInsufficienteException;
 import it.prova.myebay.exceptions.ElementNotFoundException;
 import it.prova.myebay.model.Ruolo;
 import it.prova.myebay.model.Utente;
@@ -168,6 +169,52 @@ public class UtenteServiceImpl implements UtenteService {
 			entityManager.getTransaction().rollback();
 			e.printStackTrace();
 			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+
+	@Override
+	public Utente accedi(String loginInput, String passwordInput) {
+		
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			utenteDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			Optional<Utente> result = utenteDAO.login(loginInput, passwordInput);
+			return result.isPresent() ? result.get() : null;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+
+	@Override
+	public boolean procediAllAcquisto(long parseLong, int prezzo) {
+		
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			entityManager.getTransaction().begin();
+
+			utenteDAO.setEntityManager(entityManager);
+			Utente UtenteCaricato = utenteDAO.findOne(parseLong);
+			if (UtenteCaricato == null)
+				throw new ElementNotFoundException("Utente con id: " + UtenteCaricato + " non trovato.");
+			if(UtenteCaricato.getCredito()<prezzo)
+				throw new CreditoResiduoInsufficienteException("Credito residuo: " + UtenteCaricato.getCredito() + " non sufficiente per l'acquisto.");
+
+			utenteDAO.delete(UtenteCaricato);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			entityManager.getTransaction().rollback();
+			e.printStackTrace();
 		} finally {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}

@@ -1,4 +1,4 @@
-package it.prova.myebay.web.servlet;
+package it.prova.myebay.web.servlet.annuncio;
 
 import java.io.IOException;
 
@@ -17,13 +17,20 @@ import it.prova.myebay.service.MyServiceFactory;
 public class ExecuteVisualizzaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		doGet(request, response);
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String idAnnuncioParam = request.getParameter("idAnnuncio");
 
 		if (!NumberUtils.isCreatable(idAnnuncioParam)) {
 			// qui ci andrebbe un messaggio nei file di log costruito ad hoc se fosse attivo
-			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
+			request.setAttribute("errorMessage", "Attenzione si è verificato un errore grave.");
 			request.getRequestDispatcher("").forward(request, response);
 			return;
 		}

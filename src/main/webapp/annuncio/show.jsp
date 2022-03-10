@@ -16,8 +16,12 @@
 	   
 	   		<!-- Fixed navbar -->
 	   		<jsp:include page="../navbar.jsp"></jsp:include>
+	   		
+	   		 <div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none':'' }" role="alert">
+					 ${errorMessage}
+				  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+			</div>
 	    
-			
 			<!-- Begin page content -->
 			<main class="flex-shrink-0">
 			  <div class="container">
@@ -55,9 +59,16 @@
 					    </div>
 					    
 					    <div class='card-footer'>
-					        <a href="ExecuteBuyAnnuncioServlet" class='btn btn-outline-primary' style='width:80px'>
-					            <i class='fa fa-chevron-left'></i> Buy
-					        </a>
+					        <c:if test="${userInfo.nome==null }">
+						         <a href="PrepareLoginServlet?from=/ExecuteVisualizzaAnnuncioServlet&idAnnuncio=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
+						            <i class='fa fa-chevron-left'></i> Buy
+						        </a>
+					        </c:if>
+					        <c:if test="${userInfo.nome!=null }">
+						         <a href="ExecuteBuyAnnuncioServlet?idUtente=${userInfo.id}&prezzo=${show_annuncio_attr.prezzo}" class='btn btn-outline-primary' style='width:80px'>
+						            <i class='fa fa-chevron-left'></i> Buy
+						        </a>
+					        </c:if>
 					    
 					        <a href="ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
