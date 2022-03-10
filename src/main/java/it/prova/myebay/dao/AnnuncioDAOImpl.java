@@ -70,7 +70,8 @@ public class AnnuncioDAOImpl implements AnnuncioDAO {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
 
-		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a where a.id = a.id ");
+		StringBuilder queryBuilder = new StringBuilder(
+				"select a from Annuncio a left join a.categorie c where a.aperto = 1 ");
 
 		if (StringUtils.isNotEmpty(annuncioInstance.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
@@ -80,8 +81,8 @@ public class AnnuncioDAOImpl implements AnnuncioDAO {
 			whereClauses.add(" a.prezzo >= :prezzo ");
 			paramaterMap.put("prezzo", annuncioInstance.getPrezzo());
 		}
-		if (annuncioInstance.getCategorie() != null) {
-			whereClauses.add(" c.id like in :listCategorie ");
+		if (annuncioInstance.getCategorie() != null && annuncioInstance.getCategorie().size() > 0) {
+			whereClauses.add(" c in :listCategorie ");
 			paramaterMap.put("listCategorie", annuncioInstance.getCategorie());
 		}
 
@@ -94,6 +95,7 @@ public class AnnuncioDAOImpl implements AnnuncioDAO {
 		}
 
 		return typedQuery.getResultList();
+
 	}
 
 }

@@ -33,7 +33,7 @@ public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 			List<Categoria> listaCategorieCompleta = MyServiceFactory.getCategoriaServiceInstance().listAllElements();
 			Set<Categoria> setCategorie = UtilityForm.buildSetCategorieForAnnuncio(listaCategorieCompleta,
 					categorieParam);
-			if (!setCategorie.isEmpty())
+			if (!setCategorie.isEmpty() && setCategorie!=null)
 				annuncioDaCercare.setCategorie(setCategorie);
 			List<Annuncio> annunciTrovati = MyServiceFactory.getAnnuncioServiceInstance()
 					.findByExample(annuncioDaCercare);
