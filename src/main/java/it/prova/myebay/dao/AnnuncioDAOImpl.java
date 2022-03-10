@@ -70,18 +70,18 @@ public class AnnuncioDAOImpl implements AnnuncioDAO {
 		Map<String, Object> paramaterMap = new HashMap<String, Object>();
 		List<String> whereClauses = new ArrayList<String>();
 
-		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a left join a.categorie c where a.id = a.id ");
+		StringBuilder queryBuilder = new StringBuilder("select a from Annuncio a where a.id = a.id ");
 
 		if (StringUtils.isNotEmpty(annuncioInstance.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
 			paramaterMap.put("testoAnnuncio", "%" + annuncioInstance.getTestoAnnuncio() + "%");
 		}
 		if (annuncioInstance.getPrezzo() >= 1) {
-			whereClauses.add("a.prezzo >= :prezzo ");
+			whereClauses.add(" a.prezzo >= :prezzo ");
 			paramaterMap.put("prezzo", annuncioInstance.getPrezzo());
 		}
 		if (annuncioInstance.getCategorie() != null) {
-			whereClauses.add("a.id like in :listCategorie");
+			whereClauses.add(" c.id like in :listCategorie ");
 			paramaterMap.put("listCategorie", annuncioInstance.getCategorie());
 		}
 

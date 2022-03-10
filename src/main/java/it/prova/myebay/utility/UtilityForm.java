@@ -58,8 +58,10 @@ public class UtilityForm {
 		}
 
 		for (Categoria CategoriaItem : listaTotaleCategorie) {
-			if (CategoriaItem.getId() == categorieIdConvertiti.iterator().next()) {
-				result.add(CategoriaItem);
+			for (Long longIdItem : categorieIdConvertiti) {
+				if (CategoriaItem.getId() == longIdItem) {
+					result.add(CategoriaItem);
+				}
 			}
 		}
 

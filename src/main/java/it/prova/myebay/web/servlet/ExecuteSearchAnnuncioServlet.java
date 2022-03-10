@@ -20,27 +20,29 @@ import it.prova.myebay.utility.UtilityForm;
 public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String testoAnnuncioParam = request.getParameter("annuncio");
 		String prezzoParam = request.getParameter("prezzo");
 		String[] categorieParam = request.getParameterValues("categoriaInput");
-		
+
 		Annuncio annuncioDaCercare = UtilityAnnuncio.createAnnuncioFromParam(testoAnnuncioParam, prezzoParam);
-		
+
 		try {
 			List<Categoria> listaCategorieCompleta = MyServiceFactory.getCategoriaServiceInstance().listAllElements();
-			Set<Categoria> setCategorie = UtilityForm.buildSetCategorieForAnnuncio(listaCategorieCompleta, categorieParam);
-			request.setAttribute("mappaCategorieConSelezionati_attr",
-					UtilityForm.buildCheckedCategorieForPages(listaCategorieCompleta, categorieParam));
-			annuncioDaCercare.setCategorie(setCategorie);
-			List<Annuncio> annunciTrovati = MyServiceFactory.getAnnuncioServiceInstance().findByExample(annuncioDaCercare);
+			Set<Categoria> setCategorie = UtilityForm.buildSetCategorieForAnnuncio(listaCategorieCompleta,
+					categorieParam);
+			if (!setCategorie.isEmpty())
+				annuncioDaCercare.setCategorie(setCategorie);
+			List<Annuncio> annunciTrovati = MyServiceFactory.getAnnuncioServiceInstance()
+					.findByExample(annuncioDaCercare);
 			request.setAttribute("search_annunci_attr", annunciTrovati);
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
-		
+
 		request.getRequestDispatcher("/annuncio/results.jsp").forward(request, response);
 	}
 
