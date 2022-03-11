@@ -164,4 +164,24 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 		}
 	}
 
+	@Override
+	public List<Annuncio> findByExampleConUtente(Annuncio annuncioDaCercare, long idInput) {
+		
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			annuncioDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return annuncioDAO.findByExampleConUtente(annuncioDaCercare, idInput);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+
 }

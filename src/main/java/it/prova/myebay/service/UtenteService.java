@@ -14,7 +14,7 @@ public interface UtenteService {
 
 	public Utente caricaSingoloElemento(Long id) throws Exception;
 	
-	public Utente caricaSingoloElementoEager(Long id) throws Exception;
+	public Utente caricaSingoloElementoEagerAnnunci(Long id) throws Exception;
 
 	public void aggiorna(Utente UtenteInstance) throws Exception;
 
@@ -35,5 +35,7 @@ public interface UtenteService {
 	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO);
 
 	public void setAcquistoDAO(AcquistoDAO acquistoDAO);
+
+	Utente caricaSingoloElementoEagerAcquisti(Long id) throws Exception;
 	
 }

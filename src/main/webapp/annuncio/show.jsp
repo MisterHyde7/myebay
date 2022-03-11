@@ -64,13 +64,13 @@
 						            <i class='fa fa-chevron-left'></i> Buy
 						        </a>
 					        </c:if>
-					        <c:if test="${userInfo.nome!=null }">
+					        <c:if test="${userInfo.nome!=null and show_annuncio_attr.aperto==true}">
 						         <a href="ExecuteBuyAnnuncioServlet?idUtente=${userInfo.id}&idAnnuncio=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
 						            <i class='fa fa-chevron-left'></i> Buy
 						        </a>
 					        </c:if>
 					    
-					        <a href="ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
+					        <a href="PrepareListAnnuncioServlet?idUtente=${userInfo.id }" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
 					    </div>

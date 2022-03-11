@@ -62,7 +62,7 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 	
 	@Override
-	public Utente caricaSingoloElementoEager(Long id) throws Exception {
+	public Utente caricaSingoloElementoEagerAcquisti(Long id) throws Exception {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -70,7 +70,7 @@ public class UtenteServiceImpl implements UtenteService {
 			utenteDAO.setEntityManager(entityManager);
 
 			// eseguo quello che realmente devo fare
-			return utenteDAO.findOneEager(id).orElse(null);
+			return utenteDAO.findOneEagerAcquisti(id).orElse(null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -272,6 +272,26 @@ public class UtenteServiceImpl implements UtenteService {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}
 		return true;
+	}
+
+	@Override
+	public Utente caricaSingoloElementoEagerAnnunci(Long id) throws Exception {
+		
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			utenteDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return utenteDAO.findOneEagerAnnunci(id).orElse(null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
 	}
 
 }

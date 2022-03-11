@@ -26,7 +26,7 @@ public class ExecuteBuyAnnuncioServlet extends HttpServlet {
 
 			if (MyServiceFactory.getUtenteServiceInstance().procediAllAcquisto(Long.parseLong(idUtenteParam), Long.parseLong(idParam))) {
 
-				Set<Acquisto> acquistiEffettuati = MyServiceFactory.getUtenteServiceInstance().caricaSingoloElementoEager(Long.parseLong(idUtenteParam)).getAcquisti();
+				Set<Acquisto> acquistiEffettuati = MyServiceFactory.getUtenteServiceInstance().caricaSingoloElementoEagerAcquisti(Long.parseLong(idUtenteParam)).getAcquisti();
 				request.setAttribute("acquisti_list_attr", acquistiEffettuati);
 			}
 

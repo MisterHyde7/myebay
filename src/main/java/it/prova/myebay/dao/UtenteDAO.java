@@ -10,6 +10,8 @@ public interface UtenteDAO extends IBaseDAO<Utente>{
 
 	public Optional<Utente> login(String loginInput, String passwordInput);
 
-	public Optional<Utente> findOneEager(Long id);
+	public Optional<Utente> findOneEagerAnnunci(Long id);
+
+	public Optional<Utente> findOneEagerAcquisti(Long id);
 
 }

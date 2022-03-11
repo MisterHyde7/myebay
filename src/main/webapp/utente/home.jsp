@@ -79,7 +79,7 @@
 			        </div>
 			        <h2>Gestisci i tuoi annunci: </h2>
 			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-			        <a class="btn btn-primary btn-lg" href="PrepareListAnnuncioServlet?idUtente=${userInfo.id}" class="icon-link">
+			        <a class="btn btn-primary btn-lg" href="PrepareSearchAnnuncioServlet?idUtente=${userInfo.id}" class="icon-link">
 			          Gestisci i tuoi annunci
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
