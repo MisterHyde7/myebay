@@ -91,7 +91,7 @@
 				        </div>
 				        <h2>Gestisci utenti: </h2>
 				        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-				        <a class="btn btn-primary btn-lg" href="PrepareListUtenteServlet" class="icon-link">
+				        <a class="btn btn-primary btn-lg" href="admin/PrepareListUtenteServlet" class="icon-link">
 				          Gestisci gli utenti
 				          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 				        </a>

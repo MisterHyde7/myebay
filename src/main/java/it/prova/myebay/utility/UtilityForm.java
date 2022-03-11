@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 import it.prova.myebay.model.Categoria;
+import it.prova.myebay.model.Ruolo;
 
 public class UtilityForm {
 
@@ -61,6 +62,61 @@ public class UtilityForm {
 			for (Long longIdItem : categorieIdConvertiti) {
 				if (CategoriaItem.getId() == longIdItem) {
 					result.add(CategoriaItem);
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public static Map<Ruolo, Boolean> buildCheckedRuoliForPages(List<Ruolo> listaTotaleRuoli,
+			String[] ruoliFromParams) {
+		TreeMap<Ruolo, Boolean> result = new TreeMap<>();
+
+		// converto array di string in List di Long
+		List<Long> ruoliIdConvertiti = new ArrayList<>();
+		for (String stringItem : ruoliFromParams != null ? ruoliFromParams : new String[] {}) {
+			ruoliIdConvertiti.add(Long.valueOf(stringItem));
+		}
+
+		for (Ruolo ruoloItem : listaTotaleRuoli) {
+			result.put(ruoloItem, ruoliIdConvertiti.contains(ruoloItem.getId()));
+		}
+
+		return result;
+	}
+
+	public static Map<Ruolo, Boolean> buildCheckedRuoliFromCategorieAlreadyInAnnuncio(List<Ruolo> listaTotaleCategorie,
+			Set<Ruolo> listaRuoliPosseduteDaUtente) {
+		TreeMap<Ruolo, Boolean> result = new TreeMap<>();
+
+		// converto array di ruoli in List di Long
+		List<Long> ruoliConvertiteInIds = new ArrayList<>();
+		for (Ruolo ruoloDiUtenteItem : listaRuoliPosseduteDaUtente != null ? listaRuoliPosseduteDaUtente
+				: new ArrayList<Ruolo>()) {
+			ruoliConvertiteInIds.add(ruoloDiUtenteItem.getId());
+		}
+
+		for (Ruolo CategoriaItem : listaTotaleCategorie) {
+			result.put(CategoriaItem, ruoliConvertiteInIds.contains(CategoriaItem.getId()));
+		}
+
+		return result;
+	}
+
+	public static Set<Ruolo> buildSetRuoliForAnnuncio(List<Ruolo> listaTotaleRuoli, String[] ruoliFromParams) {
+		Set<Ruolo> result = new HashSet<>();
+
+		// converto array di string in List di Long
+		List<Long> ruoliIdConvertiti = new ArrayList<>();
+		for (String stringItem : ruoliFromParams != null ? ruoliFromParams : new String[] {}) {
+			ruoliIdConvertiti.add(Long.valueOf(stringItem));
+		}
+
+		for (Ruolo ruoloItem : listaTotaleRuoli) {
+			for (Long longIdItem : ruoliIdConvertiti) {
+				if (ruoloItem.getId() == longIdItem) {
+					result.add(ruoloItem);
 				}
 			}
 		}
