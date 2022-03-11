@@ -16,7 +16,7 @@
 	          <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
 	            <ul class="dropdown-menu" aria-labelledby="dropdown07">
-	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/utente/home.jsp">Home Utente</a></li>
+	            	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/ExecuteAreaPersonaleServlet?idUtente=${userInfo.id}">Area Personale</a></li>
 	            <c:if test="${userInfo.isAdmin()}">
 	              	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/utente/PrepareSearchUtenteServlet">Ricerca Utenti</a></li>
 	              	<li><a class="dropdown-item" href="${pageContext.request.contextPath}/utente/PrepareInsertUtenteServlet">Inserisci Utente</a></li>
