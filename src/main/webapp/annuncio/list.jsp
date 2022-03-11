@@ -37,7 +37,7 @@
 				        <h5>Lista degli annunci</h5> 
 				    </div>
 				    <div class='card-body'>
-				    
+				    	<a class="btn btn-primary " href="PrepareInsertAnnuncioServlet">Add New</a>
 				        <div class='table-responsive'>
 				            <table class='table table-striped ' >
 				                <thead>
@@ -45,6 +45,7 @@
 			                         	<th>Testo</th>
 				                        <th>Prezzo</th>
 				                        <th>Data Pubblicazione</th>
+				                        <th>Stato Annuncio</th>
 				                        <th>Azioni</th>
 				                    </tr>
 				                </thead>
@@ -54,10 +55,12 @@
 											<td>${annuncioItem.testoAnnuncio }</td>
 											<td>${annuncioItem.prezzo }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.dataInserimento }" /></td>
+											<c:if test="${annuncioItem.aperto }"><td>Aperto</td></c:if>
+											<c:if test="${!annuncioItem.aperto }"><td>Chiuso</td></c:if>
 											<td>
 												<a class="btn  btn-sm btn-outline-primary" href="ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Dettaglio annuncio</a>
 												<a class="btn  btn-sm btn-outline-warning" href="ExecuteEditAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Modifica annuncio</a>
-												<a class="btn  btn-sm btn-outline-danger" href="ExecuteDeleteAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Elimina annuncio</a>
+												<a class="btn  btn-sm btn-outline-danger" href="PrepareDeleteAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Elimina annuncio</a>
 											</td>
 										</tr>
 									</c:forEach>

@@ -26,6 +26,10 @@ public class PrepareListAnnuncioServlet extends HttpServlet {
 			Set<Annuncio> annunciPubblicati = MyServiceFactory.getUtenteServiceInstance()
 					.caricaSingoloElementoEagerAnnunci(Long.parseLong(idUtenteParam)).getAnnunci();
 			request.setAttribute("annunci_list_attr", annunciPubblicati);
+			if (request.getAttribute("errorMessage") != null) {
+				request.setAttribute("errorMessage",
+						"Attenzione l'annuncio e' stato chiuso e non puo' essere eliminato");
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
