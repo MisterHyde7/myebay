@@ -10,6 +10,12 @@ import it.prova.myebay.model.Acquisto;
 public class AcquistoDAOImpl implements AcquistoDAO {
 	
 	private EntityManager entityManager;
+	
+	@Override
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
+
+	}
 
 	@Override
 	public List<Acquisto> list() throws Exception {
@@ -43,11 +49,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
 			throw new Exception("Problema valore in input");
 		}
 		entityManager.remove(entityManager.merge(input));
-	}
-
-	@Override
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
 	}
 
 	@Override

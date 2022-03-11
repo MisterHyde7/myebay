@@ -12,7 +12,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}">Home</a>
           </li>
-          <c:if test="${true}">
+          <c:if test="${userInfo.isAdmin()}">
 	          <li class="nav-item dropdown">
 	            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
 	            <ul class="dropdown-menu" aria-labelledby="dropdown07">
@@ -30,7 +30,7 @@
      	</c:if>
      	<c:if test="${userInfo.nome==null}">
 	     	<p class="navbar-text">
-	     	<a href="${pageContext.request.contextPath}/PrepareLoginServlet?from=${pageContext.request.requestURI}">Login</a></p>
+	     	<a href="${pageContext.request.contextPath}/PrepareLoginServlet">Login</a></p>
      	</c:if>
       </div>
     </div>

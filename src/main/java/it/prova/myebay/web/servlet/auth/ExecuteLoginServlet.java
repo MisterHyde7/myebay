@@ -36,10 +36,14 @@ public class ExecuteLoginServlet extends HttpServlet {
 			if (utenteInstance == null) {
 				request.setAttribute("errorMessage", "Utente non trovato.");
 				destinazione = "login.jsp";
-			} else {
+			} else if (!request.getParameter("paginaDiPartenza").isBlank()
+					&& request.getParameter("idAnnuncio").isBlank()) {
 				request.getSession().setAttribute("userInfo", utenteInstance);
 				request.setAttribute("idAnnuncio", request.getParameter("idAnnuncio"));
 				destinazione = request.getParameter("paginaDiPartenza");
+			} else {
+				request.getSession().setAttribute("userInfo", utenteInstance);
+				destinazione = "/utente/home.jsp";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

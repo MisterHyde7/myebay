@@ -9,7 +9,7 @@
 	 	<!-- Common imports in pages -->
 	 	<jsp:include page="../header.jsp" />
 	 	
-	   <title>Visualizza Annuncio</title>
+	   <title>Visualizza Acquisto</title>
 	   
 	 </head>
 	   <body class="d-flex flex-column h-100">
@@ -28,51 +28,34 @@
 			  
 			  		<div class='card'>
 					    <div class='card-header'>
-					        <h5>Visualizza dettaglio annuncio</h5>
+					        <h5>Visualizza dettaglio acquisto</h5>
 					    </div>
 					    
 					
 					    <div class='card-body'>
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Id:</dt>
-							  <dd class="col-sm-9">${show_annuncio_attr.id}</dd>
+							  <dd class="col-sm-9">${acquisto_show_attr.id}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Testo annuncio:</dt>
-							  <dd class="col-sm-9">${show_annuncio_attr.testoAnnuncio}</dd>
+							  <dt class="col-sm-3 text-right">Descrizione:</dt>
+							  <dd class="col-sm-9">${acquisto_show_attr.descrizione}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
 							  <dt class="col-sm-3 text-right">Prezzo:</dt>
-							  <dd class="col-sm-9">${show_annuncio_attr.prezzo}</dd>
+							  <dd class="col-sm-9">${acquisto_show_attr.prezzo}</dd>
 					    	</dl>
 					    	
 					    	<dl class="row">
-							  <dt class="col-sm-3 text-right">Data Inserimento:</dt>
-							  <dd class="col-sm-9"><fmt:formatDate type = "date" value = "${show_annuncio_attr.dataInserimento}" /></dd>
+							  <dt class="col-sm-3 text-right">Data Acquisto:</dt>
+							  <dd class="col-sm-9"><fmt:formatDate type = "date" value = "${acquisto_show_attr.dataAcquisto}" /></dd>
 					    	</dl>
 					    	
 					    	
 					    	
 					    <!-- end card body -->
-					    </div>
-					    
-					    <div class='card-footer'>
-					        <c:if test="${userInfo.nome==null }">
-						         <a href="PrepareLoginServlet?from=/ExecuteVisualizzaAnnuncioServlet&idAnnuncio=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
-						            <i class='fa fa-chevron-left'></i> Buy
-						        </a>
-					        </c:if>
-					        <c:if test="${userInfo.nome!=null }">
-						         <a href="ExecuteBuyAnnuncioServlet?idUtente=${userInfo.id}&idAnnuncio=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
-						            <i class='fa fa-chevron-left'></i> Buy
-						        </a>
-					        </c:if>
-					    
-					        <a href="ExecuteListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
-					            <i class='fa fa-chevron-left'></i> Back
-					        </a>
 					    </div>
 					 
 					<!-- end card -->

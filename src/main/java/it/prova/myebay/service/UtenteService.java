@@ -2,6 +2,8 @@ package it.prova.myebay.service;
 
 import java.util.List;
 
+import it.prova.myebay.dao.AcquistoDAO;
+import it.prova.myebay.dao.AnnuncioDAO;
 import it.prova.myebay.dao.UtenteDAO;
 import it.prova.myebay.model.Ruolo;
 import it.prova.myebay.model.Utente;
@@ -11,6 +13,8 @@ public interface UtenteService {
 	public List<Utente> listAllElements() throws Exception;
 
 	public Utente caricaSingoloElemento(Long id) throws Exception;
+	
+	public Utente caricaSingoloElementoEager(Long id) throws Exception;
 
 	public void aggiorna(Utente UtenteInstance) throws Exception;
 
@@ -26,6 +30,10 @@ public interface UtenteService {
 
 	public Utente accedi(String loginInput, String passwordInput);
 
-	public boolean procediAllAcquisto(long parseLong, int prezzo);
+	public boolean procediAllAcquisto(long parseLong, Long input);
+
+	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO);
+
+	public void setAcquistoDAO(AcquistoDAO acquistoDAO);
 	
 }

@@ -17,8 +17,10 @@ public class PrepareLoginServlet extends HttpServlet {
 
 		String paginaDiPartenza = request.getParameter("from");
 		String idAnnuncio = request.getParameter("id");
-		request.setAttribute("paginaDiPartenza", paginaDiPartenza);
-		request.setAttribute("idAnnuncio", idAnnuncio);
+		if (paginaDiPartenza != null || idAnnuncio != null) {
+			request.setAttribute("paginaDiPartenza", paginaDiPartenza);
+			request.setAttribute("idAnnuncio", idAnnuncio);
+		}
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 
 	}

@@ -1,20 +1,27 @@
 package it.prova.myebay.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
 
+import it.prova.myebay.dao.AcquistoDAO;
+import it.prova.myebay.dao.AnnuncioDAO;
 import it.prova.myebay.dao.UtenteDAO;
 import it.prova.myebay.exceptions.CreditoResiduoInsufficienteException;
 import it.prova.myebay.exceptions.ElementNotFoundException;
+import it.prova.myebay.model.Acquisto;
+import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.model.Ruolo;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.web.listener.LocalEntityManagerFactoryListener;
 
 public class UtenteServiceImpl implements UtenteService {
-	
+
 	private UtenteDAO utenteDAO;
+	private AnnuncioDAO annuncioDAO;
+	private AcquistoDAO acquistoDAO;
 
 	@Override
 	public List<Utente> listAllElements() throws Exception {
@@ -45,6 +52,25 @@ public class UtenteServiceImpl implements UtenteService {
 
 			// eseguo quello che realmente devo fare
 			return utenteDAO.findOne(id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+	
+	@Override
+	public Utente caricaSingoloElementoEager(Long id) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			utenteDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return utenteDAO.findOneEager(id).orElse(null);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -158,7 +184,7 @@ public class UtenteServiceImpl implements UtenteService {
 
 			// uso l'injection per il dao
 			utenteDAO.setEntityManager(entityManager);
-			
+
 			utenteEsistente = entityManager.merge(utenteEsistente);
 			ruoloInstance = entityManager.merge(ruoloInstance);
 
@@ -176,7 +202,7 @@ public class UtenteServiceImpl implements UtenteService {
 
 	@Override
 	public Utente accedi(String loginInput, String passwordInput) {
-		
+
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -196,21 +222,48 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
-	public boolean procediAllAcquisto(long parseLong, int prezzo) {
-		
+	public void setAnnuncioDAO(AnnuncioDAO annuncioDAO) {
+		this.annuncioDAO = annuncioDAO;
+	}
+
+	@Override
+	public void setAcquistoDAO(AcquistoDAO acquistoDAO) {
+		this.acquistoDAO = acquistoDAO;
+	}
+
+	@Override
+	public boolean procediAllAcquisto(long parseLong, Long idAnnuncioInput) {
+
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
 			entityManager.getTransaction().begin();
 
 			utenteDAO.setEntityManager(entityManager);
-			Utente UtenteCaricato = utenteDAO.findOne(parseLong);
-			if (UtenteCaricato == null)
-				throw new ElementNotFoundException("Utente con id: " + UtenteCaricato + " non trovato.");
-			if(UtenteCaricato.getCredito()<prezzo)
-				throw new CreditoResiduoInsufficienteException("Credito residuo: " + UtenteCaricato.getCredito() + " non sufficiente per l'acquisto.");
+			acquistoDAO.setEntityManager(entityManager);
+			annuncioDAO.setEntityManager(entityManager);
 
-			utenteDAO.delete(UtenteCaricato);
+			Utente utenteCaricato = utenteDAO.findOne(parseLong);
+			Annuncio annuncioCaricato = annuncioDAO.findOne(idAnnuncioInput);
+			Acquisto nuovoAcquisto = new Acquisto(annuncioCaricato.getTestoAnnuncio(), new Date(),annuncioCaricato.getPrezzo());
+
+			if (utenteCaricato == null)
+				throw new ElementNotFoundException("Utente con id: " + utenteCaricato + " non trovato.");
+			if (utenteCaricato.getCredito() < annuncioCaricato.getPrezzo())
+				throw new CreditoResiduoInsufficienteException(
+						"Credito residuo: " + utenteCaricato.getCredito() + " non sufficiente per l'acquisto.");
+
+			utenteCaricato.setCredito(utenteCaricato.getCredito() - annuncioCaricato.getPrezzo());
+			annuncioCaricato.setAperto(false);
+			if (utenteCaricato.getAcquisti() == null)
+				utenteCaricato.setAcquisti(null);
+			utenteCaricato.getAcquisti().add(nuovoAcquisto);
+			nuovoAcquisto.setUtente(utenteCaricato);
+
+			utenteDAO.update(utenteCaricato);
+			annuncioDAO.update(annuncioCaricato);
+			acquistoDAO.insert(nuovoAcquisto);
+
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();
@@ -218,6 +271,7 @@ public class UtenteServiceImpl implements UtenteService {
 		} finally {
 			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
 		}
+		return true;
 	}
 
 }
