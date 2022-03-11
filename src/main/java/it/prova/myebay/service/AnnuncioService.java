@@ -24,5 +24,7 @@ public interface AnnuncioService {
 	public List<Annuncio> findByExample(Annuncio annuncioInstance) throws Exception;
 
 	public List<Annuncio> findByExampleConUtente(Annuncio annuncioDaCercare, long parseLong);
+
+	Annuncio caricaSingoloElementoEagerConCategorie(Long id) throws Exception;
 	
 }

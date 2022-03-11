@@ -12,5 +12,7 @@ public interface AnnuncioDAO extends IBaseDAO<Annuncio>{
 	public List<Annuncio> findByExample(Annuncio annuncioInstance);
 
 	public List<Annuncio> findByExampleConUtente(Annuncio annuncioDaCercare, long idInput);
+
+	Optional<Annuncio> findOneEagerCategorie(Long id) throws Exception;
 	
 }

@@ -54,7 +54,7 @@
 					    		<input type="hidden" name="idAnnuncio" value="${annuncio_delete_attr.id}">
 					    		<input type="hidden" name="idUtente" value="${userInfo.id}">
 						    	<button type="submit" name="submit" id="submit" class="btn btn-danger">Conferma</button>
-						        <a href="PrepareListAnnuncioServlet" class='btn btn-outline-secondary' style='width:80px'>
+						        <a href="PrepareListAnnuncioServlet?idUtente=${userInfo.id }" class='btn btn-outline-secondary' style='width:80px'>
 						            <i class='fa fa-chevron-left'></i> Back
 						        </a>
 					        </form>

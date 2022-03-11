@@ -105,7 +105,7 @@ public class AnnuncioDAOImpl implements AnnuncioDAO {
 		List<String> whereClauses = new ArrayList<String>();
 
 		StringBuilder queryBuilder = new StringBuilder(
-				"select a from Annuncio a left join a.categorie c where a.utente.id = a.id");
+				"select a from Annuncio a left join a.categorie c where a.utente.id = a.utente");
 
 		if (StringUtils.isNotEmpty(annuncioDaCercare.getTestoAnnuncio())) {
 			whereClauses.add(" a.testoAnnuncio  like :testoAnnuncio ");
@@ -129,6 +129,13 @@ public class AnnuncioDAOImpl implements AnnuncioDAO {
 		}
 
 		return typedQuery.getResultList();
+	}
+	
+	@Override
+	public Optional<Annuncio> findOneEagerCategorie(Long id) throws Exception {
+		return entityManager
+				.createQuery("from Annuncio a left join fetch a.categorie c where c.id=:idAnnuncio", Annuncio.class)
+				.setParameter("idAnnuncio", id).getResultList().stream().findFirst();
 	}
 
 }

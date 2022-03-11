@@ -71,7 +71,7 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 	}
 
 	@Override
-	public void aggiorna(Annuncio AnnuncioInstance) throws Exception {
+	public void aggiorna(Annuncio annuncioInstance) throws Exception {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -81,7 +81,7 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 			// uso l'injection per il dao
 			annuncioDAO.setEntityManager(entityManager);
 
-			annuncioDAO.update(AnnuncioInstance);
+			annuncioDAO.update(annuncioInstance);
 
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
@@ -94,7 +94,7 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 	}
 
 	@Override
-	public void inserisciNuovo(Annuncio AnnuncioInstance) throws Exception {
+	public void inserisciNuovo(Annuncio annuncioInstance) throws Exception {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -104,7 +104,8 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 			// uso l'injection per il dao
 			annuncioDAO.setEntityManager(entityManager);
 
-			annuncioDAO.insert(AnnuncioInstance);
+			annuncioInstance.setAperto(true);
+			annuncioDAO.insert(annuncioInstance);
 
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
@@ -166,7 +167,7 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 
 	@Override
 	public List<Annuncio> findByExampleConUtente(Annuncio annuncioDaCercare, long idInput) {
-		
+
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -175,6 +176,25 @@ public class AnnuncioServiceImpl implements AnnuncioService {
 
 			// eseguo quello che realmente devo fare
 			return annuncioDAO.findByExampleConUtente(annuncioDaCercare, idInput);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+
+	@Override
+	public Annuncio caricaSingoloElementoEagerConCategorie(Long id) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			annuncioDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return annuncioDAO.findOneEagerCategorie(id).orElse(null);
 
 		} catch (Exception e) {
 			e.printStackTrace();

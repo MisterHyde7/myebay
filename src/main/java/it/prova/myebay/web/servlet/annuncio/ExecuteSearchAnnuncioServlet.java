@@ -34,27 +34,37 @@ public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 		String destinazione = null;
 
 		try {
-			if (idUtente.isBlank() || idUtente == null) {
+			if (idUtente == null) {
 				List<Categoria> listaCategorieCompleta = MyServiceFactory.getCategoriaServiceInstance()
 						.listAllElements();
+
 				Set<Categoria> setCategorie = UtilityForm.buildSetCategorieForAnnuncio(listaCategorieCompleta,
 						categorieParam);
+
 				if (!setCategorie.isEmpty() && setCategorie != null)
 					annuncioDaCercare.setCategorie(setCategorie);
+
 				List<Annuncio> annunciTrovati = MyServiceFactory.getAnnuncioServiceInstance()
 						.findByExample(annuncioDaCercare);
+
 				request.setAttribute("search_annunci_attr", annunciTrovati);
 				destinazione = "/annuncio/results.jsp";
+
 			} else {
 				List<Categoria> listaCategorieCompleta = MyServiceFactory.getCategoriaServiceInstance()
 						.listAllElements();
+
 				Set<Categoria> setCategorie = UtilityForm.buildSetCategorieForAnnuncio(listaCategorieCompleta,
 						categorieParam);
+
 				if (!setCategorie.isEmpty() && setCategorie != null)
 					annuncioDaCercare.setCategorie(setCategorie);
+
 				List<Annuncio> annunciTrovati = MyServiceFactory.getAnnuncioServiceInstance()
 						.findByExampleConUtente(annuncioDaCercare, Long.parseLong(idUtente));
+
 				List<Annuncio> annunciFiltrati = new ArrayList<Annuncio>();
+
 				if (statoAnnuncio != null) {
 					for (Annuncio annuncioItem : annunciTrovati) {
 						if (annuncioItem.isAperto() == Boolean.parseBoolean(statoAnnuncio)) {
@@ -65,11 +75,11 @@ public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 				} else {
 					request.setAttribute("annunci_list_attr", annunciTrovati);
 				}
+
 				destinazione = "/annuncio/list.jsp";
 			}
-			
-		} catch (Exception e) {
 
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

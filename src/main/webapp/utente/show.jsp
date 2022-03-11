@@ -69,17 +69,7 @@
 					    	
 					    <!-- end card body -->
 					    </div>
-					    	<c:if test="${userInfo.id!=null }">
-					    		<a href="ExecuteBuyAnnuncioServlet?idUtente=${userInfo.id }&idAnnuncio=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
-						         <i class='fa fa-chevron-left'></i> Buy
-						     </a>
-					    	</c:if>
-					    	<c:if test="${userInfo.id==null }">
-					    		<a href="PrepareLoginServlet" class='btn btn-outline-primary' style='width:80px'>
-						         <i class='fa fa-chevron-left'></i> Buy
-						     </a>
-					    	</c:if>
-						     <a href="PrepareListAnnuncioDaComprareServlet" class='btn btn-outline-secondary' style='width:80px'>
+						     <a href="PrepareListAnnuncioServlet?idUtente=${userInfo.id }" class='btn btn-outline-secondary' style='width:80px'>
 						         <i class='fa fa-chevron-left'></i> Back
 						     </a>
 					    </div>

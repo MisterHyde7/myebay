@@ -55,7 +55,7 @@
 											<td>${annuncioItem.prezzo }</td>
 											<td><fmt:formatDate type = "date" value = "${annuncioItem.dataInserimento }" /></td>
 											<td>
-												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaAnnuncioServlet?idAnnuncio=${annuncioItem.id }">Dettaglio annuncio</a>
+												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaAnnuncioDaComprareServlet?idAnnuncio=${annuncioItem.id }">Dettaglio annuncio</a>
 											</td>
 										</tr>
 									</c:forEach>

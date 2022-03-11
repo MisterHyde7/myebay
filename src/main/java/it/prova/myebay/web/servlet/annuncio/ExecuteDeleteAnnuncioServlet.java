@@ -50,10 +50,11 @@ public class ExecuteDeleteAnnuncioServlet extends HttpServlet {
 			return;
 		}
 
-		response.sendRedirect("PrepareListAnnuncioServlet?idUtente=" + idUtenteParam);
+		String destinazione = "PrepareListAnnuncioServlet?idUtente=" + idUtenteParam;
+		response.sendRedirect(destinazione);
 
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);

@@ -77,13 +77,13 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public Optional<Utente> findOneEagerAcquisti(Long id) {
-		return entityManager.createQuery("from Utente u left join fetch u.acquisti a where a.id=:idUtente", Utente.class)
+		return entityManager.createQuery("from Utente u left join fetch u.acquisti a where u.id = :idUtente", Utente.class)
 				.setParameter("idUtente", id).getResultList().stream().findFirst();
 	}
 
 	@Override
 	public Optional<Utente> findOneEagerAnnunci(Long id) {
-		return entityManager.createQuery("from Utente u left join fetch u.annunci a where a.id=:idUtente", Utente.class)
+		return entityManager.createQuery("from Utente u left join fetch u.annunci a where u.id = :idUtente", Utente.class)
 				.setParameter("idUtente", id).getResultList().stream().findFirst();
 	}
 

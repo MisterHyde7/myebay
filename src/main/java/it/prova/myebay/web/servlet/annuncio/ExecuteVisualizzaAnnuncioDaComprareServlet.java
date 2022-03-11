@@ -13,8 +13,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.service.MyServiceFactory;
 
-@WebServlet("/ExecuteVisualizzaAnnuncioServlet")
-public class ExecuteVisualizzaAnnuncioServlet extends HttpServlet {
+@WebServlet("/ExecuteVisualizzaAnnuncioDaComprareServlet")
+public class ExecuteVisualizzaAnnuncioDaComprareServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,7 +55,7 @@ public class ExecuteVisualizzaAnnuncioServlet extends HttpServlet {
 			return;
 		}
 
-		request.getRequestDispatcher("/utente/show.jsp").forward(request, response);
+		request.getRequestDispatcher("/annuncio/show.jsp").forward(request, response);
 	}
 
 }
