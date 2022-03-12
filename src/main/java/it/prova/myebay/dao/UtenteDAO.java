@@ -14,4 +14,6 @@ public interface UtenteDAO extends IBaseDAO<Utente>{
 
 	public Optional<Utente> findOneEagerAcquisti(Long id);
 
+	Optional<Utente> findOneEagerRuoli(Long id);
+
 }

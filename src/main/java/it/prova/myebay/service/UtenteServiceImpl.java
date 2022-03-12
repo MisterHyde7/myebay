@@ -82,7 +82,7 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
-	public void aggiorna(Utente UtenteInstance) throws Exception {
+	public void aggiorna(Utente UtenteInstance, Long idInput) throws Exception {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 
 		try {
@@ -91,8 +91,14 @@ public class UtenteServiceImpl implements UtenteService {
 
 			// uso l'injection per il dao
 			utenteDAO.setEntityManager(entityManager);
+			
+			Utente utenteDaModificare = utenteDAO.findOne(idInput);
+			utenteDaModificare.setNome(UtenteInstance.getNome());
+			utenteDaModificare.setCognome(UtenteInstance.getCognome());
+			utenteDaModificare.setUsername(UtenteInstance.getUsername());
+			utenteDaModificare.setRuoli(UtenteInstance.getRuoli());
 
-			utenteDAO.update(UtenteInstance);
+			utenteDAO.update(utenteDaModificare);
 
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
@@ -287,6 +293,25 @@ public class UtenteServiceImpl implements UtenteService {
 
 			// eseguo quello che realmente devo fare
 			return utenteDAO.findOneEagerAnnunci(id).orElse(null);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+	
+	@Override
+	public Utente caricaSingoloElementoConRuoli(Long id) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			// uso l'injection per il dao
+			utenteDAO.setEntityManager(entityManager);
+
+			// eseguo quello che realmente devo fare
+			return utenteDAO.findOneEagerRuoli(id).orElse(null);
 
 		} catch (Exception e) {
 			e.printStackTrace();

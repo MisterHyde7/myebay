@@ -1,6 +1,7 @@
 package it.prova.myebay.utility;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -71,7 +72,7 @@ public class UtilityForm {
 
 	public static Map<Ruolo, Boolean> buildCheckedRuoliForPages(List<Ruolo> listaTotaleRuoli,
 			String[] ruoliFromParams) {
-		TreeMap<Ruolo, Boolean> result = new TreeMap<>();
+		Map<Ruolo, Boolean> result = new HashMap<>();
 
 		// converto array di string in List di Long
 		List<Long> ruoliIdConvertiti = new ArrayList<>();
@@ -86,9 +87,9 @@ public class UtilityForm {
 		return result;
 	}
 
-	public static Map<Ruolo, Boolean> buildCheckedRuoliFromCategorieAlreadyInAnnuncio(List<Ruolo> listaTotaleCategorie,
+	public static Map<Ruolo, Boolean> buildCheckedRuoliFromUtenteAlreadyInUtente(List<Ruolo> listaTotaleCategorie,
 			Set<Ruolo> listaRuoliPosseduteDaUtente) {
-		TreeMap<Ruolo, Boolean> result = new TreeMap<>();
+		Map<Ruolo, Boolean> result = new HashMap<>();
 
 		// converto array di ruoli in List di Long
 		List<Long> ruoliConvertiteInIds = new ArrayList<>();
@@ -97,14 +98,14 @@ public class UtilityForm {
 			ruoliConvertiteInIds.add(ruoloDiUtenteItem.getId());
 		}
 
-		for (Ruolo CategoriaItem : listaTotaleCategorie) {
-			result.put(CategoriaItem, ruoliConvertiteInIds.contains(CategoriaItem.getId()));
+		for (Ruolo ruoloItem : listaTotaleCategorie) {
+			result.put(ruoloItem, ruoliConvertiteInIds.contains(ruoloItem.getId()));
 		}
 
 		return result;
 	}
 
-	public static Set<Ruolo> buildSetRuoliForAnnuncio(List<Ruolo> listaTotaleRuoli, String[] ruoliFromParams) {
+	public static Set<Ruolo> buildSetRuoliForUtente(List<Ruolo> listaTotaleRuoli, String[] ruoliFromParams) {
 		Set<Ruolo> result = new HashSet<>();
 
 		// converto array di string in List di Long

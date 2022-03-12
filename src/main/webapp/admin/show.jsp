@@ -63,13 +63,29 @@
 							  <dd class="col-sm-9">${utente_show_attr.stato}</dd>
 					    	</dl>
 					    	
-					    	<a href="PrepareListUtenteServlet" class='btn btn-outline-secondary' style='width:80px'>
-						            <i class='fa fa-chevron-left'></i> Back
-						        </a>
+					    	<c:if test="${utente_show_attr.ruoli!=null}">
+					    	 <p>
+							  <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+							    Info Ruoli
+							  </a>
+							</p>
+							<div class="collapse" id="collapseExample">
+							  <div class="card card-body">
+							  	<c:forEach items="${mappaRuoliSelezionati_attr}" var="ruoloItem">
+							  		<dl class="row">
+								 		<dd class="col-sm-9">${ruoloItem.key.codice}</dd>
+							   		</dl>
+							  	</c:forEach>
+							  </div>
+							</div>
+							</c:if>
 					    	
+					    	<a href="PrepareListUtenteServlet" class='btn btn-outline-secondary' style='width:80px'>
+						        <i class='fa fa-chevron-left'></i> Back
+						    </a>
+					 
 					    <!-- end card body -->
 					    </div>
-					 
 					<!-- end card -->
 					</div>	
 			  
