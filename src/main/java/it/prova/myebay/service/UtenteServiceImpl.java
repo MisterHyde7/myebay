@@ -14,6 +14,7 @@ import it.prova.myebay.exceptions.ElementNotFoundException;
 import it.prova.myebay.model.Acquisto;
 import it.prova.myebay.model.Annuncio;
 import it.prova.myebay.model.Ruolo;
+import it.prova.myebay.model.StatoUtente;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.web.listener.LocalEntityManagerFactoryListener;
 
@@ -137,8 +138,9 @@ public class UtenteServiceImpl implements UtenteService {
 			Utente UtenteToRemove = utenteDAO.findOne(idUtenteToRemove);
 			if (UtenteToRemove == null)
 				throw new ElementNotFoundException("Utente con id: " + idUtenteToRemove + " non trovato.");
-
-			utenteDAO.delete(UtenteToRemove);
+			UtenteToRemove.setStato(StatoUtente.DISABILITATO);
+			entityManager.merge(UtenteToRemove);
+			
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			entityManager.getTransaction().rollback();

@@ -57,7 +57,9 @@
 											<td>${utenteItem.username }</td>
 											<td>${utenteItem.credito }</td>
 											<td>
-												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaUtentePerAdminServlet?idUtente=${utenteItem.id }">Dettaglio utente</a>
+												<a class="btn  btn-sm btn-outline-primary" href="ExecuteVisualizzaUtentePerAdminServlet?idUtente=${utenteItem.id }">Dettaglio utente</a>
+												<a class="btn  btn-sm btn-outline-warning" href="PrepareEditUtentePerAdminServlet?idUtente=${utenteItem.id }">Edit utente</a>
+												<a class="btn  btn-sm btn-outline-danger" href="PrepareDeleteUtentePerAdminServlet?idUtente=${utenteItem.id }">Disabilita utente</a>
 											</td>
 										</tr>
 									</c:forEach>
