@@ -22,7 +22,6 @@ public class PrepareLoginServlet extends HttpServlet {
 			request.setAttribute("idAnnuncio", idAnnuncio);
 		}
 		request.getRequestDispatcher("login.jsp").forward(request, response);
-
 	}
 
 }

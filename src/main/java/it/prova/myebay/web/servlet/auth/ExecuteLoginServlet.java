@@ -33,19 +33,27 @@ public class ExecuteLoginServlet extends HttpServlet {
 
 		try {
 			Utente utenteInstance = MyServiceFactory.getUtenteServiceInstance().accedi(loginInput, passwordInput);
+			
 			if (utenteInstance == null) {
+				
 				request.setAttribute("errorMessage", "Utente non trovato.");
 				destinazione = "login.jsp";
+				
 			} else if (!request.getParameter("paginaDiPartenza").isBlank()
-					&& request.getParameter("idAnnuncio").isBlank()) {
+					&& !request.getParameter("idAnnuncio").isBlank()) {
+				
 				request.getSession().setAttribute("userInfo", utenteInstance);
 				request.setAttribute("idAnnuncio", request.getParameter("idAnnuncio"));
 				destinazione = request.getParameter("paginaDiPartenza");
+				
 			} else {
+				
 				request.getSession().setAttribute("userInfo", utenteInstance);
 				destinazione = "/utente/home.jsp";
+				
 			}
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 			destinazione = "login.jsp";
 			request.setAttribute("errorMessage", "Attenzione! Si è verificato un errore.");

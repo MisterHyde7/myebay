@@ -20,6 +20,9 @@
 		<main class="form-signin">
 		  <form action="ExecuteLoginServlet" method="post" novalidate="novalidate">
 		  
+		  <input type="hidden" name="paginaDiPartenza" value="${paginaDiPartenza}">
+		    <input type="hidden" name="idAnnuncio" value="${idAnnuncio}">
+		  
 	  		<div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}" role="alert">
 		 		 ${errorMessage}
 			</div>
@@ -40,8 +43,7 @@
 		        <input type="checkbox" value="remember-me"> Remember me
 		      </label>
 		    </div>
-		    <input type="hidden" name="paginaDiPartenza" value="${paginaDiPartenza}">
-		    <input type="hidden" name="idAnnuncio" value="${idAnnuncio}">
+		    
 		
 		    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
 		    <a href="${pageContext.request.contextPath}/PrepareRegisterUtenteServlet" class="link-primary">Registrati ora</a>
