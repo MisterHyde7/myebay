@@ -30,6 +30,9 @@
 				    <div class='card-header'>
 				        <h5>Registra nuovo utente</h5> 
 				    </div>
+				     <div class='card-header'>
+				        <h3>Compila il form per completare la registrazione</h3> 
+				    </div>
 				    <div class='card-body'>
 		
 							<h6 class="card-title">I campi con <span class="text-danger">*</span> sono obbligatori</h6>

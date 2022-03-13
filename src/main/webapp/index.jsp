@@ -44,6 +44,13 @@
 					</div>
 			  
 			  <div class='card'>
+			  	<h1 class="display-2 text-center">BENVENUTO IN myEBAY</h1>
+			  		<div class="card">
+					  <div class="card-body">
+					  	<p>Benvenuto, su <b>myEBAY</b> potrai acquistare ogni sorta di articolo che gli utenti mettono in mostra.
+					  	La navigazione e' libera, ma ricorda che per acquistare o pubblicare annunci bisogna registrarsi.</p>
+					  </div>
+					</div>
 				    <div class='card-header'>
 				        <h5>Ricerca annunci</h5> 
 				    </div>

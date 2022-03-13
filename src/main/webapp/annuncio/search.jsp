@@ -47,6 +47,9 @@
 				    <div class='card-header'>
 				        <h5>Ricerca annunci</h5> 
 				    </div>
+				     <div class='card-header'>
+				        <h3>Filtra come preferisci gli annunci da cercare</h3> 
+				    </div>
 				    <div class='card-body'>
 		
 							<form method="post" action="ExecuteSearchAnnuncioServlet" class="row g-3" >

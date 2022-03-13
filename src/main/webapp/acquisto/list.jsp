@@ -36,6 +36,9 @@
 				    <div class='card-header'>
 				        <h5>Lista degli acquisti</h5> 
 				    </div>
+				    <div class='card-header'>
+				        <h3>Ecco tutta la lista dei tuoi acquisti</h3> 
+				    </div>
 				    <div class='card-body'>
 				    
 				        <div class='table-responsive'>

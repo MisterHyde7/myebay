@@ -54,7 +54,7 @@
 			     <div class="p-5 mb-4 bg-light rounded-3">
 				      <div class="container-fluid py-5">
 				        <h1 class="display-5 fw-bold">Bentornato ${userInfo.username}</h1>
-				        <p class="col-md-8 fs-4">Da qui potrai svolgere ogni tipo di attivita</p>
+				        <p class="col-md-8 fs-4">Da qui potrai svolgere tutte le attivita che vorrai</p>
 				      </div>
 			    </div>
 			    
@@ -68,7 +68,7 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
 			        <h2>Visualizza tutti i tuoi acquisti: </h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <p>Con questa funzionalita' potrai osservare lo storico di tutti i tuoi acquisti effettuati</p>
 			        <a class="btn btn-primary btn-lg" href="PrepareListAcquistoServlet?idUtente=${userInfo.id}">Visualizza i tuoi acquisti
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
@@ -78,7 +78,7 @@
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
 			        <h2>Gestisci i tuoi annunci: </h2>
-			        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+			        <p>Da qui potrai visualizzare tutti i tuoi annunci e gestirli in qualsiasi modo</p>
 			        <a class="btn btn-primary btn-lg" href="PrepareSearchAnnuncioServlet?idUtente=${userInfo.id}" class="icon-link">
 			          Gestisci i tuoi annunci
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
@@ -90,7 +90,7 @@
 				          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 				        </div>
 				        <h2>Gestisci utenti: </h2>
-				        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+				        <p>Funzionalita' per admin: Da questoportale potrai censire, disabilitare o inserire nuovi utenti</p>
 				        <a class="btn btn-primary btn-lg" href="admin/PrepareListUtenteServlet" class="icon-link">
 				          Gestisci gli utenti
 				          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
