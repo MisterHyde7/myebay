@@ -20,7 +20,6 @@
 		<main class="form-signin">
 		  <form action="ExecuteLoginServlet" method="post" novalidate="novalidate">
 		  
-		  <input type="hidden" name="paginaDiPartenza" value="${paginaDiPartenza}">
 		    <input type="hidden" name="idAnnuncio" value="${idAnnuncio}">
 		  
 	  		<div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}" role="alert">

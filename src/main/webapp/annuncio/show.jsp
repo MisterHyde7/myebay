@@ -75,7 +75,7 @@
 						     </a>
 					    	</c:if>
 					    	<c:if test="${userInfo.id==null }">
-					    		<a href="PrepareLoginServlet?from=${pageContext.request.requestURI}&id=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
+					    		<a href="PrepareLoginServlet?id=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
 						         <i class='fa fa-chevron-left'></i> Buy
 						     </a>
 					    	</c:if>

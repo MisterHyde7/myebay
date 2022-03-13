@@ -39,12 +39,11 @@ public class ExecuteLoginServlet extends HttpServlet {
 				request.setAttribute("errorMessage", "Utente non trovato.");
 				destinazione = "login.jsp";
 				
-			} else if (!request.getParameter("paginaDiPartenza").isBlank()
-					&& !request.getParameter("idAnnuncio").isBlank()) {
+			} else if (!request.getParameter("idAnnuncio").isBlank()) {
 				
 				request.getSession().setAttribute("userInfo", utenteInstance);
 				request.setAttribute("idAnnuncio", request.getParameter("idAnnuncio"));
-				destinazione = request.getParameter("paginaDiPartenza");
+				destinazione = "/ExecuteVisualizzaAnnuncioDaComprareServlet";
 				
 			} else {
 				

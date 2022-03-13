@@ -15,10 +15,8 @@ public class PrepareLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String paginaDiPartenza = request.getParameter("from");
 		String idAnnuncio = request.getParameter("id");
-		if (paginaDiPartenza != null || idAnnuncio != null) {
-			request.setAttribute("paginaDiPartenza", paginaDiPartenza);
+		if (idAnnuncio != null) {
 			request.setAttribute("idAnnuncio", idAnnuncio);
 		}
 		request.getRequestDispatcher("login.jsp").forward(request, response);
