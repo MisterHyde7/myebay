@@ -50,6 +50,7 @@
 				                </thead>
 				                <tbody>
 				                	<c:forEach items="${search_annunci_attr }" var="annuncioItem">
+				                		<c:if test="${annuncioItem.aperto}">
 										<tr>
 											<td>${annuncioItem.testoAnnuncio }</td>
 											<td>${annuncioItem.prezzo }</td>
@@ -58,6 +59,7 @@
 												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaAnnuncioDaComprareServlet?idAnnuncio=${annuncioItem.id }">Dettaglio annuncio</a>
 											</td>
 										</tr>
+										</c:if>
 									</c:forEach>
 				                </tbody>
 				            </table>

@@ -26,7 +26,7 @@ public class ExecuteSearchAnnuncioServlet extends HttpServlet {
 
 		String testoAnnuncioParam = request.getParameter("annuncio");
 		String prezzoParam = request.getParameter("prezzo");
-		String[] categorieParam = request.getParameterValues("categoriaInput");
+		String[] categorieParam = request.getParameterValues("categoriaEntry");
 		String idUtente = request.getParameter("idUtente");
 		String statoAnnuncio = request.getParameter("aperto/chiuso");
 

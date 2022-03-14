@@ -60,7 +60,7 @@
 							</p>
 							<div class="collapse" id="collapseExample">
 							  <div class="card card-body">
-							  	<c:forEach items="${categorie}" var="categoriaItem">
+							  	<c:forEach items="${show_annuncio_attr.categorie}" var="categoriaItem">
 							  		<dl class="row">
 								 		<dd class="col-sm-9">${categoriaItem.codice}</dd>
 							   		</dl>
@@ -75,7 +75,7 @@
 						     </a>
 					    	</c:if>
 					    	<c:if test="${userInfo.id==null }">
-					    		<a href="PrepareLoginServlet?id=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
+					    		<a href="PrepareLoginDaAnnuncioServlet?id=${show_annuncio_attr.id}" class='btn btn-outline-primary' style='width:80px'>
 						         <i class='fa fa-chevron-left'></i> Buy
 						     </a>
 					    	</c:if>

@@ -37,11 +37,11 @@ public class ExecuteVisualizzaAnnuncioDaComprareServlet extends HttpServlet {
 
 		try {
 			Annuncio annuncioInstance = MyServiceFactory.getAnnuncioServiceInstance()
-					.caricaSingoloElementoEager(Long.parseLong(idAnnuncioParam));
+					.caricaSingoloElementoEagerConCategorie(Long.parseLong(idAnnuncioParam));
 
 			if (annuncioInstance == null) {
 				request.setAttribute("errorMessage", "Elemento non trovato.");
-				request.getRequestDispatcher("ExecuteListAnnuncioServlet?operationResult=NOT_FOUND").forward(request,
+				request.getRequestDispatcher("ExecuteSearchAnnuncioServlet?operationResult=NOT_FOUND").forward(request,
 						response);
 				return;
 			}

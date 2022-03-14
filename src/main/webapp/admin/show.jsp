@@ -71,9 +71,9 @@
 							</p>
 							<div class="collapse" id="collapseExample">
 							  <div class="card card-body">
-							  	<c:forEach items="${mappaRuoliSelezionati_attr}" var="ruoloItem">
+							  	<c:forEach items="${utente_show_attr.ruoli}" var="ruoloItem">
 							  		<dl class="row">
-								 		<dd class="col-sm-9">${ruoloItem.key.codice}</dd>
+								 		<dd class="col-sm-9">${ruoloItem.codice}</dd>
 							   		</dl>
 							  	</c:forEach>
 							  </div>

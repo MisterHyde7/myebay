@@ -38,6 +38,9 @@
 				    </div>
 				    <div class='card-body'>
 				        <div class='table-responsive'>
+					        <div class='card-body'>
+					    		<a class="btn btn-primary " href="PrepareInsertAnnuncioServlet">Add New</a>
+					        <div class='table-responsive'>
 				            <table class='table table-striped ' >
 				                <thead>
 				                    <tr>
@@ -66,6 +69,8 @@
 				                </tbody>
 				            </table>
 				        </div>
+				      </div>
+				    </div>
 				   
 					<!-- end card-body -->			   
 			    </div>

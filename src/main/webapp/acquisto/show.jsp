@@ -53,7 +53,9 @@
 							  <dd class="col-sm-9"><fmt:formatDate type = "date" value = "${acquisto_show_attr.dataAcquisto}" /></dd>
 					    	</dl>
 					    	
-					    	
+					    	 <a href="PrepareListAcquistoServlet?idUtente=${userInfo.id }" class='btn btn-outline-secondary' style='width:80px'>
+						         <i class='fa fa-chevron-left'></i> Back
+						     </a>
 					    	
 					    <!-- end card body -->
 					    </div>

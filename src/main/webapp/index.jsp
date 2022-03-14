@@ -33,7 +33,6 @@
 	   		<!-- Fixed navbar -->
 	   		<jsp:include page="./navbar.jsp"></jsp:include>
 	    
-			
 			<!-- Begin page content -->
 			<main class="flex-shrink-0">
 			  <div class="container">
@@ -44,10 +43,10 @@
 					</div>
 			  
 			  <div class='card'>
-			  	<h1 class="display-2 text-center">BENVENUTO IN myEBAY</h1>
+			  	<h1 class="display-2 text-center text-warning">BENVENUTO IN myEBAY</h1>
 			  		<div class="card">
 					  <div class="card-body">
-					  	<p>Benvenuto, su <b>myEBAY</b> potrai acquistare ogni sorta di articolo che gli utenti mettono in mostra.
+					  	<p>Benvenuto su <b class="text-warning">myEBAY</b>, da qui potrai acquistare ogni sorta di articolo che gli utenti mettono in mostra.
 					  	La navigazione e' libera, ma ricorda che per acquistare o pubblicare annunci bisogna registrarsi.</p>
 					  </div>
 					</div>
@@ -69,7 +68,7 @@
 									<input type="number" class="form-control" name="prezzo" id="prezzo" placeholder="Inserire il prezzo minimo" >
 								</div>
 								
-								<div class="col-md-6 form-check">
+								<div class="col-md-12 form-check">
 									<p>Categorie:</p>
 									<c:forEach items="${search_categorie_attr}" var="categoriaEntry">
 										<div class="form-check">

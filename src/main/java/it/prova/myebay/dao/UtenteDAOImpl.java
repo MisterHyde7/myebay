@@ -15,7 +15,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	@Override
 	public List<Utente> list() throws Exception {
-		return entityManager.createQuery("from Utente", Utente.class).getResultList();
+		return entityManager.createQuery("from Utente u left join fetch u.ruoli", Utente.class).getResultList();
 	}
 
 	@Override

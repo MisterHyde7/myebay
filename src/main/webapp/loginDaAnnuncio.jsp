@@ -18,7 +18,9 @@
 	<body class="text-center">
 	    
 		<main class="form-signin">
-		  <form action="ExecuteLoginServlet" method="post" novalidate="novalidate">
+		  <form action="ExecuteLoginDaAnnuncioServlet" method="post" novalidate="novalidate">
+		  
+		    <input type="hidden" name="idAnnuncio" value="${idAnnuncio}">
 		  
 	  		<div class="alert alert-danger alert-dismissible fade show ${errorMessage==null?'d-none': ''}" role="alert">
 		 		 ${errorMessage}
@@ -43,7 +45,7 @@
 		    
 		
 		    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-		    <a href="${pageContext.request.contextPath}/PrepareRegisterUtenteServlet" class="link-dark">Registrati ora</a>
+		    <a href="${pageContext.request.contextPath}/PrepareRegisterUtenteServlet" class="link-primary">Registrati ora</a>
 		    <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
 		  </form>
 		</main>

@@ -20,7 +20,7 @@ public class ExecuteVisualizzaUtentePerAdminServlet extends HttpServlet {
 		
 		try {
 			
-			Utente utenteDaVisualizzare = MyServiceFactory.getUtenteServiceInstance().caricaSingoloElemento(Long.parseLong(idUtente));
+			Utente utenteDaVisualizzare = MyServiceFactory.getUtenteServiceInstance().caricaSingoloElementoConRuoli(Long.parseLong(idUtente));
 			request.setAttribute("utente_show_attr", utenteDaVisualizzare);
 			
 		} catch (Exception e) {

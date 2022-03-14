@@ -1,7 +1,6 @@
 package it.prova.myebay.web.servlet.auth;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +12,9 @@ import org.apache.commons.lang3.StringUtils;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.service.MyServiceFactory;
 
-@WebServlet("/ExecuteLoginServlet")
-public class ExecuteLoginServlet extends HttpServlet {
+@WebServlet("/ExecuteLoginDaAnnuncioServlet")
+public class ExecuteLoginDaAnnuncioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -42,7 +40,8 @@ public class ExecuteLoginServlet extends HttpServlet {
 			} else {
 				
 				request.getSession().setAttribute("userInfo", utenteInstance);
-				destinazione = "/utente/home.jsp";
+				request.setAttribute("idAnnuncio", request.getParameter("idAnnuncio"));
+				destinazione = "/ExecuteVisualizzaAnnuncioDaComprareServlet";
 				
 			}
 		} catch (Exception e) {
@@ -60,5 +59,5 @@ public class ExecuteLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
 	}
-
+	
 }
