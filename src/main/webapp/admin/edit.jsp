@@ -48,18 +48,27 @@
 							
 							
 								<div class="col-md-6">
-									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
+									<label for="nome" class="form-label">Nome </label>
 									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome" value="${utenteDaModificare.nome }" required>
 								</div>
 								
 								<div class="col-md-6">
-									<label for="cognome" class="form-label">Cognome <span class="text-danger">*</span></label>
+									<label for="cognome" class="form-label">Cognome </label>
 									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${utenteDaModificare.cognome }" required>
 								</div>
 							
 								<div class="col-md-6">
-									<label for="username" class="form-label">Username <span class="text-danger">*</span></label>
+									<label for="username" class="form-label">Username </label>
 									<input type="text" class="form-control" name="username" id="username" placeholder="Inserire lo username" value="${utenteDaModificare.username }" required>
+								</div>
+								
+								<div class="col-md-6">
+									<label for="stato" class="form-label">Stato </label>
+									<select class="form-select" aria-label="Default select example" id="stato" name="statoUtente">
+									  <option selected>Stato utente</option>
+									  <option value="attivo">ATTIVO</option>
+									  <option value="disabilitato">DISABILITATO</option>
+									</select>
 								</div>
 								
 								<div class="col-md-6 form-check">

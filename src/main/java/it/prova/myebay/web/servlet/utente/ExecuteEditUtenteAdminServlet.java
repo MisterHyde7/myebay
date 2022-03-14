@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.prova.myebay.model.Ruolo;
+import it.prova.myebay.model.StatoUtente;
 import it.prova.myebay.model.Utente;
 import it.prova.myebay.service.MyServiceFactory;
 import it.prova.myebay.utility.UtilityForm;
@@ -25,6 +26,7 @@ public class ExecuteEditUtenteAdminServlet extends HttpServlet {
 		String cognomeParam = request.getParameter("cognome");
 		String usernameParam = request.getParameter("username");
 		String[] ruoliSelezionati = request.getParameterValues("ruoloInput");
+		String statoParam = request.getParameter("statoUtente");
 		String idUtente = request.getParameter("idUtente");
 
 		Utente utenteInstance = UtilityUtente.createUtenteFromParams(nomeParam, cognomeParam, usernameParam);
@@ -46,6 +48,12 @@ public class ExecuteEditUtenteAdminServlet extends HttpServlet {
 				request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
 				request.getRequestDispatcher("edit.jsp").forward(request, response);
 				return;
+			}
+			
+			if (statoParam.equals("attivo")) {
+				utenteInstance.setStato(StatoUtente.ATTIVO);
+			} else if (statoParam.equals("disabilitato")) {
+				utenteInstance.setStato(StatoUtente.DISABILITATO);
 			}
 			
 			MyServiceFactory.getUtenteServiceInstance().aggiorna(utenteInstance, Long.parseLong(idUtente));

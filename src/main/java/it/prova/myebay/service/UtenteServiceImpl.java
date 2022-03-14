@@ -97,6 +97,7 @@ public class UtenteServiceImpl implements UtenteService {
 			utenteDaModificare.setCognome(UtenteInstance.getCognome());
 			utenteDaModificare.setUsername(UtenteInstance.getUsername());
 			utenteDaModificare.setRuoli(UtenteInstance.getRuoli());
+			utenteDaModificare.setStato(UtenteInstance.getStato());
 
 			utenteDAO.update(utenteDaModificare);
 
