@@ -24,15 +24,15 @@
 	            </ul>
 	          </li>
 	        </c:if>
-       	</ul>
 	         <form class="d-flex" method="post" action="${pageContext.request.contextPath}/ExecuteSearchAnnuncioServlet?prezzo=1">
-		        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+		        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="annuncio">
 		        <button class="btn btn-outline-dark" type="submit">Search</button>
   		    </form>
+       	</ul>
       </div>
       <div class="col-md-3 text-end">
         <c:if test="${userInfo.nome!=null}">
-	        <p class="navbar-text">Utente: ${userInfo.username }(${userInfo.nome } ${userInfo.cognome })
+	        <p class="navbar-text">Utente: ${userInfo.username }
 	     	<a href="${pageContext.request.contextPath}/LogoutServlet">Logout</a></p>
      	</c:if>
      	<c:if test="${userInfo.nome==null}">

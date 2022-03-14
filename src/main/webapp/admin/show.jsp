@@ -65,7 +65,7 @@
 					    	
 					    	<c:if test="${utente_show_attr.ruoli!=null}">
 					    	 <p>
-							  <a class="btn btn-primary btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+							  <a class="btn btn-warning btn-sm" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
 							    Info Ruoli
 							  </a>
 							</p>

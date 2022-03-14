@@ -64,34 +64,34 @@
 			  <div class="container px-4 py-5" id="featured-3">
 			    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon bg-warning bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
 			        </div>
 			        <h2>Visualizza tutti i tuoi acquisti: </h2>
 			        <p>Con questa funzionalita' potrai osservare lo storico di tutti i tuoi acquisti effettuati</p>
-			        <a class="btn btn-primary btn-lg" href="PrepareListAcquistoServlet?idUtente=${userInfo.id}">Visualizza i tuoi acquisti
+			        <a class="btn btn-warning btn-lg" href="PrepareListAcquistoServlet?idUtente=${userInfo.id}">Visualizza i tuoi acquisti
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
 			      <div class="feature col">
-			        <div class="feature-icon bg-primary bg-gradient">
+			        <div class="feature-icon bg-warning bg-gradient">
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
 			        </div>
 			        <h2>Gestisci i tuoi annunci: </h2>
 			        <p>Da qui potrai visualizzare tutti i tuoi annunci e gestirli in qualsiasi modo</p>
-			        <a class="btn btn-primary btn-lg" href="PrepareSearchAnnuncioServlet?idUtente=${userInfo.id}" class="icon-link">
+			        <a class="btn btn-warning btn-lg" href="PrepareSearchAnnuncioServlet?idUtente=${userInfo.id}" class="icon-link">
 			          Gestisci i tuoi annunci
 			          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 			        </a>
 			      </div>
 			      <c:if test="${userInfo.isAdmin() }">
 				      <div class="feature col">
-				        <div class="feature-icon bg-primary bg-gradient">
+				        <div class="feature-icon bg-warning bg-gradient">
 				          <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"/></svg>
 				        </div>
 				        <h2>Gestisci utenti: </h2>
 				        <p>Funzionalita' per admin: Da questoportale potrai censire, disabilitare o inserire nuovi utenti</p>
-				        <a class="btn btn-primary btn-lg" href="admin/PrepareListUtenteServlet" class="icon-link">
+				        <a class="btn btn-warning btn-lg" href="admin/PrepareListUtenteServlet" class="icon-link">
 				          Gestisci gli utenti
 				          <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"/></svg>
 				        </a>
